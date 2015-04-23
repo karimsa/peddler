@@ -4,7 +4,7 @@ require('../')({
     User: {
       email: String,
       password: String,
-      '_steve': {
+      '_peddler': {
          key: String,
          secret: String,
          rusty: 'boolean'
