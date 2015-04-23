@@ -2,6 +2,8 @@
 
 a lightweight REST framework.
 
+[![NPM](https://nodei.co/npm/peddler.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/peddler/)
+
 ## Usage
 
 To use this framework, install it via npm (`npm install --save peddler`) and configure your router:
