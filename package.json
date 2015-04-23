@@ -1,0 +1,47 @@
+{
+  "name": "peddler",
+  "version": "0.0.1",
+  "description": "a lightweight REST framework",
+  "main": "index.js",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "test": "jshint -- index.js lib/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OHDB/peddler"
+  },
+  "keywords": [
+    "express",
+    "mongoose",
+    "rest",
+    "api"
+  ],
+  "author": "Karim Alibhai",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/OHDB/peddler/issues"
+  },
+  "homepage": "https://github.com/OHDB/peddler",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "chalk": "^1.0.0",
+    "compression": "^1.4.3",
+    "express": "^4.12.3",
+    "iptables": "0.0.4",
+    "morgan": "^1.5.2",
+    "next-port": "0.0.4",
+    "passport": "^0.2.1",
+    "passport-http": "^0.2.2",
+    "proxy-events": "0.0.1",
+    "randomstring": "^1.0.5",
+    "toobusy": "^0.2.4"
+  },
+  "devDependencies": {
+    "chimp": "0.0.1",
+    "jshint": "^2.7.0",
+    "mongoose": "3.8.22"
+  }
+}
