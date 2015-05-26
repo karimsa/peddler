@@ -4,7 +4,7 @@
   "description": "a lightweight REST framework",
   "main": "index.js",
   "engines": {
-    "node": "0.10.x"
+    "node": "0.12.x"
   },
   "scripts": {
     "test": "jshint -- index.js lib/*.js"
@@ -38,7 +38,7 @@
     "proxy-events": "0.0.1",
     "randomstring": "^1.0.5",
     "spdy": "^1.32.0",
-    "toobusy": "^0.2.4"
+    "toobusy-js": "^0.4.2"
   },
   "devDependencies": {
     "jshint": "^2.7.0",
