@@ -112,7 +112,7 @@ module.exports = function (options) {
        * load the appropriate module for now, but await
        * key/cert lookup before instantiating server
        */
-    , server = require('http' + (secure ? 's' : ''))
+    , server = options.spdy ? require('spdy') : require('http' + (secure ? 's' : ''))
 
       /**
        * this is the default port, however, we will change
@@ -144,13 +144,13 @@ module.exports = function (options) {
   if (!options.hasOwnProperty('badConnections')) options.badConnections = 5
 
   /** synchronously load up the key and certificate */
-  if (secure && !ssl.key) {
+  if ((secure || options.spdy) && !ssl.key) {
     ssl.key = fs.readFileSync(path.resolve('.', 'ssl', 'server.key'), 'utf8')
     ssl.cert = fs.readFileSync(path.resolve('.', 'ssl', 'server.crt'), 'utf8')
   }
 
   /** create the appropriate web server */
-  server = secure ? server.Server(ssl, app) : server.Server(app)
+  server = secure || options.spdy ? server.Server(ssl, app) : server.Server(app)
 
   /**
    * configure server latency handler (this happens before express to

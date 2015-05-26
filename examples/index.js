@@ -1,18 +1,16 @@
 // simplest app setup
 require('../')({
-  schema: require('chimp')(process.env.DB_CONN, {
-    User: {
-      email: String,
-      password: String,
-      '_peddler': {
-         key: String,
-         secret: String,
-         rusty: 'boolean'
-       }
-     }
-   }).User,
+  schema: require('mongoose').connect(process.env.DB_CONN).model('User', {
+    email: String,
+    password: String,
+    '_peddler': {
+      key: String,
+      secret: String,
+      rusty: 'boolean'
+    }
+   }),
 
-  secure: false,
+  spdy: true,
   routes: require('path').resolve(__dirname, './routes')
 }).on('listening', function () {
   console.log('listening... somewhere')

@@ -37,10 +37,10 @@
     "passport-http": "^0.2.2",
     "proxy-events": "0.0.1",
     "randomstring": "^1.0.5",
+    "spdy": "^1.32.0",
     "toobusy": "^0.2.4"
   },
   "devDependencies": {
-    "chimp": "0.0.1",
     "jshint": "^2.7.0",
     "mongoose": "3.8.22"
   }
