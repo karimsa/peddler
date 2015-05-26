@@ -11,6 +11,7 @@ require('../')({
    }),
 
   spdy: true,
+  dirname: __dirname,
   routes: require('path').resolve(__dirname, './routes')
 }).on('listening', function () {
   console.log('listening... somewhere')

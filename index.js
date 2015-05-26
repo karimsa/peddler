@@ -145,8 +145,8 @@ module.exports = function (options) {
 
   /** synchronously load up the key and certificate */
   if ((secure || options.spdy) && !ssl.key) {
-    ssl.key = fs.readFileSync(path.resolve('.', 'ssl', 'server.key'), 'utf8')
-    ssl.cert = fs.readFileSync(path.resolve('.', 'ssl', 'server.crt'), 'utf8')
+    ssl.key = fs.readFileSync(path.resolve(options.dirname || '.', 'ssl', 'server.key'), 'utf8')
+    ssl.cert = fs.readFileSync(path.resolve(options.dirname || '.', 'ssl', 'server.crt'), 'utf8')
   }
 
   /** create the appropriate web server */
