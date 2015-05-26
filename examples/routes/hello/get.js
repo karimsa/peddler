@@ -1,5 +1,4 @@
-module.exports = function (req) {
-  return {
-    msg: 'hello, world'
-  }
+module.exports = function* () {
+  yield 'hello, world\n'
+  return 'bye\n'
 }
