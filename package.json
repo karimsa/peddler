@@ -1,6 +1,6 @@
 {
   "name": "peddler",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "a lightweight REST framework",
   "main": "index.js",
   "engines": {
