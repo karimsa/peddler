@@ -150,7 +150,7 @@ module.exports = function (options) {
   }
 
   /** create the appropriate web server */
-  server = secure || options.spdy ? server.createServer(ssl, app) : server.createServer(app)
+  app.server = server = secure || options.spdy ? server.createServer(ssl, app) : server.createServer(app)
 
   /**
    * configure server latency handler (this happens before express to
