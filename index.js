@@ -107,6 +107,9 @@ module.exports = function (options) {
 
       /** if specified, we'll assume it comes preloaded with the key/cert */
     , ssl = options.ssl || {}
+    
+      /** if explicitally false, then we will not use any authentication */
+    , auth = options.auth !== false
 
       /**
        * load the appropriate module for now, but await
@@ -129,12 +132,14 @@ module.exports = function (options) {
     , freqlist  = {}
 
   /** complain for http servers */
-  if (!secure) console.warn(chalk.yellow.bold('WARN: peddler was made insecure by your choices.'))
+  if (!secure || !auth) console.warn(chalk.yellow.bold('WARN: peddler was made insecure by your choices.'))
 
   /** configure passport globals */
-  User = options.schema
-  options.username = options.username || 'email'
-  options.password = options.password || 'password'
+  if (auth) {
+    User = options.schema
+    options.username = options.username || 'email'
+    options.password = options.password || 'password'
+  }
 
   /**
    * configure maximum server latency and maximum number of
@@ -233,12 +238,22 @@ module.exports = function (options) {
     .disable('x-powered-by')
     .use(morgan(options.log || chalk.yellow.bold(':method :url :status :response-time ms ":user-agent" ":remote-addr"')))
     .use(compression())
-    .use(passport.initialize())
-    .use(bodyParser.json())
-    .use(function (req, res, next) {
+  
+  /** enable authentication */
+  if (auth) app.use(passport.initialize())
+  
+  /** everything must be json */
+  app.use(bodyParser.json())
+  
+  /** auth or nah */
+  if (auth) app.use(function (req, res, next) {
       res.set('Content-Type', 'application/json')
       next()
     }, passport.authenticate('basic'), router)
+  else app.use(function (req, res, next) {
+      res.set('Content-Type', 'application/json')
+      next()
+    }, router)
 
   /** add the listening method */
   app.listen = function (start, end) {
