@@ -115,7 +115,7 @@ module.exports = function (options) {
        * load the appropriate module for now, but await
        * key/cert lookup before instantiating server
        */
-    , server = options.spdy ? require('spdy') : require('http' + (secure ? 's' : ''))
+    , server = options.http2 || options.spdy ? require('http2') : require('http' + (secure ? 's' : ''))
 
       /**
        * this is the default port, however, we will change
