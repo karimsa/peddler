@@ -1,8 +1,8 @@
 /**
  * @file index.js
  * @project peddler
- * @license GPLv3.
- * @copyright 2015 Online Health Database.
+ * @license GPL-3.0.
+ * @copyright 2015-2016 Karim Alibhai.
  */
 
 "use strict";
