@@ -1,7 +1,7 @@
 /**
  * index.js - peddler
  * 
- * Licensed under MIT license.
+ * Licensed under Apache-2.0 license.
  * Copyright (C) 2017 Karim Alibhai.
  */
 
