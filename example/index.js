@@ -16,4 +16,4 @@ require('../')({
     'koa-morgan': 'dev',
     'koa-bodyparser': null
   }
-})
+}).catch(console.log)
