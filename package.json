@@ -1,0 +1,37 @@
+{
+  "name": "peddler",
+  "version": "0.0.1",
+  "description": "Rapidly build web APIs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karimsa/peddler.git"
+  },
+  "keywords": [
+    "API",
+    "rapid",
+    "quick"
+  ],
+  "author": "Karim Alibhai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karimsa/peddler/issues"
+  },
+  "homepage": "https://github.com/karimsa/peddler#readme",
+  "dependencies": {
+    "debug": "^2.6.8",
+    "koa-router": "^7.2.0",
+    "mz": "^2.6.0"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-register": "^6.24.1",
+    "gulp-babel": "^6.1.2",
+    "koa-bodyparser": "^4.2.0",
+    "koa-morgan": "^1.0.1"
+  }
+}
