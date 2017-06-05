@@ -40,6 +40,8 @@ module.exports = async config => {
   /**
    * Fix options.
    */
+  config.middleware = config.middleware || {}
+
   config.directories = Object.assign({
     routes: 'routes',
     middleware: 'middleware'
@@ -79,12 +81,14 @@ module.exports = async config => {
   /**
    * Load middleware from directory.
    */
-  ;(await fs.readdir(config.directories.middleware)).map(mod => {
-    if (mod !== 'index.js') {
-      debug('adding middleware: %s', mod.substr(0, mod.length - 3))
-      app.use(require(path.join(config.directories.middleware, mod)).default)
-    }
-  })
+  if (await fs.exists(config.directories.middleware)) {
+    (await fs.readdir(config.directories.middleware)).map(mod => {
+      if (mod !== 'index.js') {
+        debug('adding middleware: %s', mod.substr(0, mod.length - 3))
+        app.use(require(path.join(config.directories.middleware, mod)).default)
+      }
+    })
+  }
 
   /**
    * Recursive route loader.
