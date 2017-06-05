@@ -22,8 +22,15 @@ module.exports = async config => {
   /**
    * Get app constructor via loader.
    */
-  const App = typeof config.loader === 'object' && config.loader.hasOwnProperty('loader') ?
-              config.loader.loader : config.loader
+  let App = typeof config.loader === 'object' && config.loader.hasOwnProperty('loader') ?
+            config.loader.loader : config.loader
+
+  /**
+   * Support ES2015 modules.
+   */
+  if (typeof App === 'object' && App.hasOwnProperty('default')) {
+    App = App.default
+  }
 
   /**
    * Create app.
