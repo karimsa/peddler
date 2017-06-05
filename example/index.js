@@ -12,8 +12,8 @@ require('../')({
     middleware: __dirname + '/mw',
     routes: __dirname + '/app'
   },
-  middleware: {
-    'koa-morgan': 'dev',
-    'koa-bodyparser': null
-  }
+  middleware: [
+    ['koa-morgan', 'dev'],
+    'koa-bodyparser'
+  ]
 }).catch(console.log)

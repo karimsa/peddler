@@ -40,7 +40,7 @@ module.exports = async config => {
   /**
    * Fix options.
    */
-  config.middleware = config.middleware || {}
+  config.middleware = config.middleware || []
 
   config.directories = Object.assign({
     routes: 'routes',
@@ -68,14 +68,25 @@ module.exports = async config => {
   }
 
   /**
-   * Load middleware from object.
+   * Load middleware from array.
    */
-  for (let mw in config.middleware) {
-    if (config.middleware.hasOwnProperty(mw)) {
-      app.use(
-        require(mw)(config.middleware[mw])
-      )
-    }
+  if (config.middleware instanceof Array) {
+    config.middleware.forEach(mw => {
+      if ( mw instanceof Array ) {
+        debug(
+          'loading %s middleware with config: %j',
+          mw[0], mw[1]
+        )
+
+        mw = require(mw[0])(mw[1])
+      } else {
+        debug('loading %s middleware without config', mw)
+
+        mw = require(mw)()
+      }
+
+      app.use(mw)
+    })
   }
 
   /**
