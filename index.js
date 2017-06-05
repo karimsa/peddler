@@ -133,5 +133,10 @@ module.exports = async config => {
   /**
    * Start up app.
    */
-  app.bootstrap()
+  await app.bootstrap()
+
+  /**
+   * Return app after bootstrap completion.
+   */
+  return app
 }
